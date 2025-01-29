@@ -9,6 +9,10 @@ const Navbar = () => {
     navigate("/signup"); // Redirect to /signup page
   };
 
+  const handleLogin = () => {
+    navigate("/signin"); // Redirect to /signin page
+  };
+
   return (
     <nav className="navbar">
       <h1>FarmersNest</h1>
@@ -16,7 +20,9 @@ const Navbar = () => {
         <button className="sign-up" onClick={handleSignUp}>
           Sign Up
         </button>
-        <button className="login">Login</button>
+        <button className="login" onClick={handleLogin}> {/* Login button action */}
+          Login
+        </button>
       </div>
     </nav>
   );
