@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { auth } from "../firebase"; // Import the initialized auth
+import { auth } from "../firebase"; 
 import "../css/SignUpPage.css";
 
 function SignUpPage() {
-  const [name, setName] = useState(""); // User's full name
+  const [name, setName] = useState(""); 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [role, setRole] = useState(""); // User's role (Buyer or Seller)
+  const [role, setRole] = useState(""); 
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
@@ -16,7 +16,6 @@ function SignUpPage() {
     setError("");
     setSuccess("");
     try {
-      // Create the user with email and password
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         email,
@@ -24,16 +23,9 @@ function SignUpPage() {
       );
       const user = userCredential.user;
 
-      // Set the display name for the newly created user
       await updateProfile(user, { displayName: name });
-      console.log("User created with display name:", user.displayName);
-
-      // You can also store the role (buyer or seller) in the user's profile or in the database
-      console.log("User role:", role);
-
       setSuccess("Account created successfully! Please sign in.");
     } catch (err) {
-      console.error("Error signing up:", err);
       setError(err.message);
     }
   };
@@ -49,7 +41,6 @@ function SignUpPage() {
           <input
             type="text"
             id="name"
-            name="name"
             placeholder="Enter your full name"
             value={name}
             onChange={(e) => setName(e.target.value)}
@@ -62,7 +53,6 @@ function SignUpPage() {
           <input
             type="email"
             id="email"
-            name="email"
             placeholder="Enter your email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -75,7 +65,6 @@ function SignUpPage() {
           <input
             type="password"
             id="password"
-            name="password"
             placeholder="Create a password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -87,7 +76,6 @@ function SignUpPage() {
           <label htmlFor="role">Role</label>
           <select
             id="role"
-            name="role"
             value={role}
             onChange={(e) => setRole(e.target.value)}
             required

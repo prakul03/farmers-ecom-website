@@ -1,16 +1,16 @@
 import React from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
-import "../css/LandingPage.css"; // Ensure path is correct
+import { useNavigate } from "react-router-dom"; 
+import "../css/LandingPage.css"; 
 
 const Navbar = () => {
-  const navigate = useNavigate(); // Initialize navigate function
+  const navigate = useNavigate(); 
 
   const handleSignUp = () => {
-    navigate("/signup"); // Redirect to /signup page
+    navigate("/signup"); 
   };
 
-  const handleLogin = () => {
-    navigate("/signin"); // Redirect to /signin page
+  const handleSignIn = () => {
+    navigate("/signin");
   };
 
   return (
@@ -20,7 +20,7 @@ const Navbar = () => {
         <button className="sign-up" onClick={handleSignUp}>
           Sign Up
         </button>
-        <button className="login" onClick={handleLogin}> {/* Login button action */}
+        <button className="login" onClick={handleSignIn}>
           Login
         </button>
       </div>
