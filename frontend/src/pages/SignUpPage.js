@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { auth } from "../firebase"; 
+import { auth } from "../firebase";
+import axios from "axios"; // Make sure axios is imported
 import "../css/SignUpPage.css";
 
 function SignUpPage() {
-  const [name, setName] = useState(""); 
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [role, setRole] = useState(""); 
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
@@ -15,7 +15,9 @@ function SignUpPage() {
     e.preventDefault();
     setError("");
     setSuccess("");
+
     try {
+      // Firebase Authentication for user creation
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         email,
@@ -23,8 +25,17 @@ function SignUpPage() {
       );
       const user = userCredential.user;
 
+      // Update Firebase profile with the user's name
       await updateProfile(user, { displayName: name });
-      setSuccess("Account created successfully! Please sign in.");
+
+      // Send UID, name, and email to backend for PostgreSQL storage
+      await axios.post("http://127.0.0.1:5000/signup", {
+        uid: user.uid, // Firebase UID
+        name: name,
+        email: email,
+      });
+
+      setSuccess("Account created successfully!");
     } catch (err) {
       setError(err.message);
     }
@@ -70,20 +81,6 @@ function SignUpPage() {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-        </div>
-
-        <div className="input-group">
-          <label htmlFor="role">Role</label>
-          <select
-            id="role"
-            value={role}
-            onChange={(e) => setRole(e.target.value)}
-            required
-          >
-            <option value="">Select your role</option>
-            <option value="buyer">Buyer</option>
-            <option value="seller">Seller</option>
-          </select>
         </div>
 
         <div className="actions">

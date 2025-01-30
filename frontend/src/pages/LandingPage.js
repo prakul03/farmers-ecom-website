@@ -1,19 +1,18 @@
 import React from "react";
-import { useNavigate } from "react-router-dom"; 
-import "../css/LandingPage.css"; 
+import { useNavigate } from "react-router-dom";
+import "../css/LandingPage.css";
 
 const Navbar = () => {
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   const handleSignUp = () => {
-    navigate("/signup"); 
+    navigate("/signup");
   };
 
   const handleSignIn = () => {
     navigate("/signin");
   };
-
-  return (
+  return(
     <nav className="navbar">
       <h1>FarmersNest</h1>
       <div>
@@ -27,7 +26,6 @@ const Navbar = () => {
     </nav>
   );
 };
-
 const HeroSection = () => (
   <section className="hero-section">
     <h1>Fresh Ingredients, Delivered</h1>
@@ -49,11 +47,9 @@ const WhyThisSection = () => (
     </p>
   </section>
 );
-
 const CategoryCard = ({ category }) => (
   <div className="category-card">{category}</div>
 );
-
 const CategoriesSection = () => {
   const categories = ["Fresh Produce", "Dairy & Poultry", "Dry Groceries"];
   return (
@@ -81,7 +77,16 @@ const TestimonialsSection = () => {
       text: "FarmersNest has transformed our kitchen sourcing!",
       author: "Happy Restaurant Owner",
     },
+    {
+      text: "The freshest ingredients at my doorstep every time!",
+      author: "Delighted Chef",
+    },
+    {
+      text: "FarmersNest is a game-changer for our business.",
+      author: "Satisfied Customer",
+    },
   ];
+
   return (
     <section className="testimonial-section">
       <h2>What Our Customers Say</h2>
