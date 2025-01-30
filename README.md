@@ -4,10 +4,10 @@ Start with cloning into the directory
 git clone https://github.com/prakul03/farmers-ecom-website
 ```
 ## .ENV file management
-Create a .env file in the **frontend** folder
-For all keys check whatapp group pinned messages
-Copy paste the keys in the .env file
-Add the path to your .env file which is /frontend/.env in .gitignore which should be in your root dir.
+Create a .env file in the **frontend** folder  
+For all keys check whatapp group pinned messages  
+Copy paste the keys in the .env file  
+Add the path to your .env file which is /frontend/.env in .gitignore which should be in your root dir.  
 
 # How to stage your changes and make local commits
 After making changes make sure you add them and commit the changes
