@@ -21,7 +21,6 @@ function SignInPage() {
       setError(err.message);
     }
   };
-
   return (
     <div className="signup-container">
       <h2>Sign In</h2>
