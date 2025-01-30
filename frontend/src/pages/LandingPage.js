@@ -1,12 +1,12 @@
 import React from "react";
-import { useNavigate } from "react-router-dom"; 
-import "../css/LandingPage.css"; 
+import { useNavigate } from "react-router-dom";
+import "../css/LandingPage.css";
 
 const Navbar = () => {
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   const handleSignUp = () => {
-    navigate("/signup"); 
+    navigate("/signup");
   };
 
   const handleSignIn = () => {
@@ -28,16 +28,24 @@ const Navbar = () => {
   );
 };
 
-const HeroSection = () => (
-  <section className="hero-section">
-    <h1>Fresh Ingredients, Delivered</h1>
-    <p>
-      Sourcing the best for your restaurant, cloud kitchen, or food business.
-      Fresh, organic, and locally sourced ingredients delivered directly to you.
-    </p>
-    <button>Shop</button>
-  </section>
-);
+const HeroSection = () => {
+  const navigate = useNavigate();
+
+  const handleShopClick = () => {
+    navigate("/shop"); // Fixed navigation to match App.js
+  };
+
+  return (
+    <section className="hero-section">
+      <h1>Fresh Ingredients, Delivered</h1>
+      <p>
+        Sourcing the best for your restaurant, cloud kitchen, or food business.
+        Fresh, organic, and locally sourced ingredients delivered directly to you.
+      </p>
+      <button onClick={handleShopClick}>Shop</button>
+    </section>
+  );
+};
 
 const WhyThisSection = () => (
   <section className="why-this-section">
@@ -86,11 +94,7 @@ const TestimonialsSection = () => {
     <section className="testimonial-section">
       <h2>What Our Customers Say</h2>
       {testimonials.map((testimonial, index) => (
-        <TestimonialCard
-          key={index}
-          text={testimonial.text}
-          author={testimonial.author}
-        />
+        <TestimonialCard key={index} text={testimonial.text} author={testimonial.author} />
       ))}
     </section>
   );
