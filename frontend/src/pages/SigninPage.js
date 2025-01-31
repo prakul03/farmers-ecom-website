@@ -1,35 +1,30 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../firebase"; 
-import "../css/SignUpPage.css"; 
+import { auth } from "../firebase";
+import "../css/SignUpPage.css";
 
 function SignInPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
+  const navigate = useNavigate(); // Hook for navigation
 
   const handleSignIn = async (e) => {
     e.preventDefault();
     setError("");
-    setSuccess("");
+
     try {
-      const userCredential = await signInWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-      setSuccess("Signed in successfully!");
+      await signInWithEmailAndPassword(auth, email, password);
+      navigate("/homepage"); // Redirect to HomePage after successful sign-in
     } catch (err) {
       setError(err.message);
     }
   };
-
   return (
     <div className="signup-container">
       <h2>Sign In</h2>
       {error && <p className="error-message">{error}</p>}
-      {success && <p className="success-message">{success}</p>}
       <form onSubmit={handleSignIn} className="signup-form">
         <div className="input-group">
           <label htmlFor="email">Email</label>

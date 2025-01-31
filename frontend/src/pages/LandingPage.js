@@ -12,8 +12,7 @@ const Navbar = () => {
   const handleSignIn = () => {
     navigate("/signin");
   };
-
-  return (
+  return(
     <nav className="navbar">
       <h1>FarmersNest</h1>
       <div>
@@ -57,11 +56,9 @@ const WhyThisSection = () => (
     </p>
   </section>
 );
-
 const CategoryCard = ({ category }) => (
   <div className="category-card">{category}</div>
 );
-
 const CategoriesSection = () => {
   const categories = ["Fresh Produce", "Dairy & Poultry", "Dry Groceries"];
   return (
@@ -89,7 +86,16 @@ const TestimonialsSection = () => {
       text: "FarmersNest has transformed our kitchen sourcing!",
       author: "Happy Restaurant Owner",
     },
+    {
+      text: "The freshest ingredients at my doorstep every time!",
+      author: "Delighted Chef",
+    },
+    {
+      text: "FarmersNest is a game-changer for our business.",
+      author: "Satisfied Customer",
+    },
   ];
+
   return (
     <section className="testimonial-section">
       <h2>What Our Customers Say</h2>
